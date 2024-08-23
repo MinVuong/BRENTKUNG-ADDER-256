@@ -1,0 +1,207 @@
+module BK256_ver1 (
+	
+    input clk,
+
+    input rst_n,
+ 
+    input [255:0] A,
+
+    input [255:0] B,
+   
+    input Ci,
+
+    output reg [255:0] S,
+
+    output reg Co
+
+);
+
+
+
+reg [15:0] Cout;
+
+reg [15:0] Cin;
+
+//reg  [255:0] S;
+
+reg Cout_0, Cout_1, Cout_2,Cout_3,Cout_4,Cout_5,Cout_6,Cout_7,Cout_8,Cout_9,Cout_10,Cout_11,Cout_12,Cout_13,Cout_14;
+
+
+
+// 16-bit Brent-Kung adder
+
+BrentKung  adder0 (.A(A[15:0]),   .B(B[15:0]),   .Cin(1'b0),   .S(S[15:0]),   .Cout(Cout[0]));
+
+BrentKung  adder1 (.A(A[31:16]),  .B(B[31:16]),  .Cin(Cout_0), .S(S[31:16]),  .Cout(Cout[1]));
+
+BrentKung  adder2 (.A(A[47:32]),  .B(B[47:32]),  .Cin(Cout_1), .S(S[47:32]),  .Cout(Cout[2]));
+
+BrentKung  adder3 (.A(A[63:48]),  .B(B[63:48]),  .Cin(Cout_2), .S(S[63:48]),  .Cout(Cout[3]));
+
+BrentKung  adder4 (.A(A[79:64]),  .B(B[79:64]),  .Cin(Cout_3), .S(S[79:64]),  .Cout(Cout[4]));
+
+BrentKung adder5 (.A(A[95:80]),  .B(B[95:80]),  .Cin(Cout_4), .S(S[95:80]),  .Cout(Cout[5]));
+
+BrentKung  adder6 (.A(A[111:96]), .B(B[111:96]), .Cin(Cout_5), .S(S[111:96]), .Cout(Cout[6]));
+
+BrentKung  adder7 (.A(A[127:112]), .B(B[127:112]), .Cin(Cout_6), .S(S[127:112]), .Cout(Cout[7]));
+
+BrentKung  adder8 (.A(A[143:128]), .B(B[143:128]), .Cin(Cout_7), .S(S[143:128]), .Cout(Cout[8]));
+
+BrentKung  adder9 (.A(A[159:144]), .B(B[159:144]), .Cin(Cout_8), .S(S[159:144]), .Cout(Cout[9]));
+
+BrentKung  adder10 (.A(A[175:160]), .B(B[175:160]), .Cin(Cout_9), .S(S[175:160]), .Cout(Cout[10]));
+
+BrentKung  adder11 (.A(A[191:176]), .B(B[191:176]), .Cin(Cout_10), .S(S[191:176]), .Cout(Cout[11]));
+
+BrentKung  adder12 (.A(A[207:192]), .B(B[207:192]), .Cin(Cout_11), .S(S[207:192]), .Cout(Cout[12]));
+
+BrentKung  adder13 (.A(A[223:208]), .B(B[223:208]), .Cin(Cout_12), .S(S[223:208]), .Cout(Cout[13]));
+
+BrentKung  adder14 (.A(A[239:224]), .B(B[239:224]), .Cin(Cout_13), .S(S[239:224]), .Cout(Cout[14]));
+
+BrentKung  adder15 (.A(A[255:240]), .B(B[255:240]), .Cin(Cout_14), .S(S[255:240]), .Cout(Cout[15]));
+
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_0<=0;
+        end
+        else begin
+                Cout_0<=Cout[0];
+        end
+end
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_1<=0;
+        end
+        else begin
+                Cout_1<=Cout[1];
+        end
+end
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_2<=0;
+        end
+        else begin
+                Cout_2<=Cout[2];
+        end
+end
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_3<=0;
+        end
+        else begin
+                Cout_3<=Cout[3];
+        end
+end
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_4<=0;
+        end
+        else begin
+                Cout_4<=Cout[4];
+        end
+end
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_5<=0;
+        end
+        else begin
+                Cout_5<=Cout[5];
+        end
+end
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_6<=0;
+        end
+        else begin
+                Cout_6<=Cout[6];
+        end
+end
+
+
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_7<=0;
+        end
+        else begin
+                Cout_7<=Cout[7];
+        end
+end
+ 
+
+always@(posedge clk,negedge rst_n) begin
+	if (!rst_n) begin
+		Cout_8<=0;
+	end
+        else begin
+                Cout_8<=Cout[8];
+        end
+end
+
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_9<=0;
+        end
+        else begin
+                Cout_9<=Cout[9];
+        end
+end
+
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_10<=0;
+        end
+        else begin
+                Cout_10<=Cout[10];
+        end
+end
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_11<=0;
+        end
+        else begin
+                Cout_11<=Cout[11];
+        end
+end
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_12<=0;
+        end
+        else begin
+                Cout_12<=Cout[12];
+        end
+end
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_13<=0;
+        end
+        else begin
+                Cout_13<=Cout[13];
+        end
+end
+always@(posedge clk,negedge rst_n) begin
+        if (!rst_n) begin
+                Cout_14<=0;
+        end
+        else begin
+                Cout_14<=Cout[14];
+        end
+end
+
+
+always@(posedge clk, negedge rst_n) begin
+	if (!rst_n) begin
+		Co <=0;
+	end
+	else begin
+		Co<=Cout[15];
+	end
+end
+		
+
+
+endmodule
+
+
+
